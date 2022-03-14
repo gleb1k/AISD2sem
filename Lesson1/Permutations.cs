@@ -73,7 +73,7 @@ namespace Lesson1
 
         public static bool SummaExist(int a, int b, int c)
         {
-            
+            //baobab
         }
     }
 }

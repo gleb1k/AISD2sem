@@ -36,13 +36,16 @@ namespace Lesson1
 
             //----------------------------------------------------------
 
-            int[,] wp = new int[,]
-            {
-                {1,2},
-                {2,1},
-                {1,1}
-            };
-            DynamicTasks.KnapSack.Run();
+            //int[,] wp = new int[,]
+            //{
+            //    {1,2},
+            //    {2,1},
+            //    {1,1}
+            //};
+            //DynamicTasks.KnapSack.Run();
+
+            DijkstraAlg dijAlg = new DijkstraAlg();
+            dijAlg.Run();
         }
     }
 }

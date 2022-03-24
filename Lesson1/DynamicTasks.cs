@@ -41,6 +41,44 @@ namespace Lesson1
                 }
             }
         }
+        public class Sakhir
+        {
+            public static void Run()
+            {
+                var building = GetBuilding();
+                int floorCount = building.GetLength(0);
+                int roomCount = building.GetLength(1)-2;  
+
+                var dp = new int[floorCount, 4];
+                dp[0, 2] = Int32.MaxValue;
+                dp[0, 3] = Int32.MaxValue;
+
+                for (int i = 0; i < floorCount; i++)
+                {
+                    CalcFloor(i, building,ref dp);
+                }
+                Console.WriteLine($"Колво минут:{ Math.Min(dp[0, floorCount - 1], dp[2, floorCount - 1])}");
+            }
+            private static void CalcFloor(int floor, int[,] building
+                ,ref int[,] dp)
+            {
+                
+            }
+            private static int[,] GetBuilding()
+            {
+                return new int[,]
+                {
+                    {0,0,0,0,1,0},
+                    {0,0,0,0,1,0},
+                    {0,0,1,0,0,0}
+                };
+            }
+        }
+
+        public static class RobotPath
+        {
+
+        }
 
 
     }

@@ -43,9 +43,12 @@ namespace Lesson1
             //    {1,1}
             //};
             //DynamicTasks.KnapSack.Run();
+
             DynamicTasks.Sakhir.Run();
-            DijkstraAlg dijAlg = new DijkstraAlg();
-            dijAlg.Run();
+
+
+            //DijkstraAlg dijAlg = new DijkstraAlg();
+            //dijAlg.Run();
         }
     }
 }

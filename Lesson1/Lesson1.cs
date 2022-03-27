@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Lesson1.Graphs;
 
 
 namespace Lesson1
@@ -49,6 +50,8 @@ namespace Lesson1
 
             //DijkstraAlg dijAlg = new DijkstraAlg();
             //dijAlg.Run();
+            BellFordAlg dfa = new BellFordAlg();
+            dfa.Run();
         }
     }
 }

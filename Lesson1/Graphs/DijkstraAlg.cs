@@ -10,7 +10,6 @@ namespace Lesson1
     {
         public  void Run()
         {
-
             var graph = GetGraph();
             var vCount = graph.GetLength(0);
             //Вершины, которые надо обойти

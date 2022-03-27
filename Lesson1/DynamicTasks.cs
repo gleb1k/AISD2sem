@@ -63,7 +63,7 @@ namespace Lesson1
                 for (int i = 0; i < floorCount; i++)
                     CalcFloor(i, floorCount, roomCount, building, ref dp);
 
-                Console.WriteLine($"Количество минут " +
+                Console.WriteLine($"Cахир. Количество минут " +
                     $"{Math.Min(dp[0, floorCount - 1], dp[2, floorCount - 1])}");
 
             }
@@ -130,7 +130,7 @@ namespace Lesson1
                 else if (floor == 0)
                 {
                     //выходим с левой лестницы и возвращаемся в левую лестницу
-                    dp[0, 0] = mostRightRoomWithLight * 2;
+                    dp[0, 0] = mostRightRoomWithLight * 2 + 1; // ????????????????????????? добавил здесь +1, вроде нужен (включение света), а вроде и без него работает
                     //выходим с левой лестницы, переходим в правую лестницу
                     dp[0, 1] = roomCount + 1;
 
@@ -140,7 +140,48 @@ namespace Lesson1
                     dp[0, 2] = Int32.MaxValue;
                     dp[0, 3] = Int32.MaxValue;
                 }
+                //последний этаж
+                else if (floor == floorCount-1)
+                {
+                    //выходим с левой лестницы и возвращаемся в левую лестницу
+                    dp[floor, 0] =
+                        //стоимость дойти до floor - 1 этажа
+                        Math.Min(dp[floor - 1, 0], dp[floor - 1, 3]) +
+                        //стоимость подъема на этаж
+                        1 +
+                        //стоимость дойти до последней комнаты 
+                        //с вкл светом и обратно
+                        mostRightRoomWithLight+1;
 
+                    //выходим с левой лестницы, переходим в правую лестницу
+                    dp[floor, 1] =
+                        //стоимость дойти до floor - 1 этажа
+                        Math.Min(dp[floor - 1, 0], dp[floor - 1, 3]) +
+                        //стоимость подъема на этаж
+                        1 +
+                        //стоимость пройти весь этаж
+                        mostRightRoomWithLight + 1;
+
+                    //выходим с правой лестницы, возвращаемся в правую лестницу
+                    dp[floor, 2] =
+                        //стоимость дойти до floor - 1 этажа
+                        Math.Min(dp[floor - 1, 1], dp[floor - 1, 2]) +
+                        //стоимость подъема на этаж
+                        1 +
+                        //стоимость дойти до самой левой комнаты со светом и обратно
+                        //= 1(стоимость перейти с лестницы на этаж)
+                        // + количество шагов до самой левой комнаты 
+                         mostLeftRoomWithLight +1;
+
+                    //выходим с правой лестницы, переходим в левую лестницу 
+                    dp[floor, 3] =
+                        //стоимость дойти до floor - 1 этажа
+                        Math.Min(dp[floor - 1, 1], dp[floor - 1, 2]) +
+                        //стоимость подъема на этаж
+                        1 +
+                        //пройти по всему этажу
+                        mostLeftRoomWithLight + 1;
+                }
 
             }
 
@@ -160,7 +201,10 @@ namespace Lesson1
                     }
                 }
             }
-
+            /// <summary>
+            /// Переворачиваем здание, тк чтение идет сверху вниз
+            /// </summary>
+            /// <returns></returns>
             private static int[,] GetBuilding()
             {
                 return new int[,]
@@ -168,6 +212,8 @@ namespace Lesson1
                 { 0,0,0,0,1,0 },
                 { 0,0,0,0,1,0 },
                 { 0,0,1,0,0,0 }
+                //{0,1,0,0 },
+                //{0,0,1,0 }
                 };
             }
         }

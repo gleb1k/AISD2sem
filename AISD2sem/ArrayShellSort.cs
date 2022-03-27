@@ -6,15 +6,8 @@ using System.Threading.Tasks;
 
 namespace AISD2sem
 {
-    public class Semestrovka
+    public class ArrayShellSort
     {
-        //метод для обмена элементов
-       private static void Swap(ref int a, ref int b)
-        {
-            var t = a;
-            a = b;
-            b = t;
-        }
        public static int[] ShellSort(int[] array)
         {
             //расстояние между элементами, которые сравниваются
@@ -30,11 +23,16 @@ namespace AISD2sem
                         j = j - d;
                     }
                 }
-
                 d = d / 2;
             }
-
             return array;
+        }
+        //метод для обмена элементов
+        private static void Swap(ref int a, ref int b)
+        {
+            var t = a;
+            a = b;
+            b = t;
         }
     }
 }

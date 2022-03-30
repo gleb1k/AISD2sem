@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Diagnostics;
 
 namespace AISD2sem
 {
@@ -8,20 +9,40 @@ namespace AISD2sem
         static void Main(string[] args)
         {
             Console.WriteLine("Сортировка Шелла: ");
-            //string path1 = @"C:\Users\gleb\Desktop\Прога\gleb1k\AISD2sem\numbers1.txt";
-            string path2 = @"C:\Users\gleb\Desktop\Прога\gleb1k\AISD2sem\numbers2.txt";
+            string path = @"C:\Users\gleb\Desktop\Прога\gleb1k\AISD2sem\files\numbersF.txt";
+            string pathTest = @"C:\Users\gleb\Desktop\Прога\gleb1k\AISD2sem\files\numbers2.txt";
 
-            int[][] intArray = FileTasks<int>.ArrayRead2(path2);
+            //FileTasks.FileFilling(path);
+
+            int[][] intArray = FileTasks.ArrayRead(path);
+            var list = FileTasks.ListRead(path);
+
+            int iterations = 0;
+
+            using var table = new StreamWriter(new FileStream(@"C:\Users\gleb\Desktop\Прога\gleb1k\AISD2sem\files\FileGrapgics.csv",
+                FileMode.Create,
+                FileAccess.Write)); //Табличка 
+
             for (int i = 0; i < intArray.Length; i++)
             {
-                Console.WriteLine($"{i}. Отсортированный массив: {string.Join(", ", ArrayShellSort.ShellSort(intArray[i]))}");
+                var timer = new Stopwatch();
+                timer.Start();
+                var result = Sort.ShellSort(intArray[i], ref iterations);
+                timer.Stop();
+
+                //table.WriteLine($"{intArray[i].Length}; {iterations}; {timer.Elapsed.Ticks}"); //Запись в табличку
+
             }
 
-            Console.WriteLine();
+            //for (int i = 0; i < list.Count; i++)
+            //{
+            //    var timer = new Stopwatch();
+            //    timer.Start();
+            //    var result = Sort.ShellSort(list[i], ref iterations);
+            //    timer.Stop();
 
-            var list = FileTasks<int>.ListRead(path2);
-            Console.WriteLine($"Отсортированный список: {string.Join(", ", ListShellSort<int>.ShellSort(list))}");
-
+            ////    table.WriteLine($"{list[i].Count}; {iterations}; {timer.Elapsed.Ticks}"); //Запись в табличку
+            //}
 
         }
     }

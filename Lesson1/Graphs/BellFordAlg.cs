@@ -21,19 +21,23 @@ namespace Lesson1.Graphs
                 (3,2,5),
                 (4,3,-3)
                 };
+
             int[] dist = new int[5];
+            int edgeCount = 5;
             for (int i = 1; i < 5; i++)
             {
-                dist[i] = Int32.MaxValue;
+                dist[i] = Int32.MaxValue-100;
             }
-            for (int i = 1; i < dist.Length; i++)
+            for (int i = 1; i < edgeCount; i++)
             {
                 foreach (var rib in ribs)
                 {
-                    if (dist[rib.Item1] > dist[rib.Item2] + rib.Item3)
-                        dist[rib.Item1] = dist[rib.Item2] + rib.Item3;
+                    if (dist[rib.Item2] > dist[rib.Item1] + rib.Item3)
+                        dist[rib.Item2] = dist[rib.Item1] + rib.Item3;
                 }
             }
+            Console.Write("Алгоритм Беллмана-Форда: ");
+            ArrayTasks.Print(dist);
                 
         }
     }

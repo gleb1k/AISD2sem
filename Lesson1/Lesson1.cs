@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Lesson1.Graphs;
+using Lesson1.CodeForces;
 
 
 namespace Lesson1
@@ -45,13 +46,16 @@ namespace Lesson1
             //};
             //DynamicTasks.KnapSack.Run();
 
-            DynamicTasks.Sakhir.Run();
+            //DynamicTasks.Sakhir.Run();
 
 
             //DijkstraAlg dijAlg = new DijkstraAlg();
             //dijAlg.Run();
-            BellFordAlg dfa = new BellFordAlg();
-            dfa.Run();
+            //BellFordAlg dfa = new BellFordAlg();
+            //dfa.Run();
+
+            //_492B.Run();
+            Reposts.Run();
         }
     }
 }

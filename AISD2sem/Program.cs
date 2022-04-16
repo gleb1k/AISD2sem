@@ -10,7 +10,7 @@ namespace AISD2sem
         {
             Console.WriteLine("Сортировка Шелла: ");
             string path = @"C:\Users\gleb\Desktop\Прога\gleb1k\AISD2sem\files\numbersF.txt";
-            string pathTest = @"C:\Users\gleb\Desktop\Прога\gleb1k\AISD2sem\files\numbers2.txt";
+            //string pathTest = @"C:\Users\gleb\Desktop\Прога\gleb1k\AISD2sem\files\numbers2.txt";
 
             //FileTasks.FileFilling(path);
 

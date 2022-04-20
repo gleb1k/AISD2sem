@@ -56,9 +56,10 @@ namespace Lesson1
 
             //_492B.Run();
             //Reposts.Run();
+            Reposts.Run2();
 
-            int[] ar = new int[] { 4, 33, 23, 66, 43, 0, 12, 5, 34, 99, 333333, 1 };
-            int max = ArrayTasks.FindMaxRecursive(ar);
+            //int[] ar = new int[] { 4, 33, 23, 66, 43, 0, 12, 5, 34, 99, 333333, 1 };
+            //int max = ArrayTasks.FindMaxRecursive(ar);
         }
     }
 }

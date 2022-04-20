@@ -11,6 +11,49 @@ namespace Lesson1.CodeForces
     /// </summary>
     public class Reposts
     {
+        public static void Run2()
+        {
+            int n = int.Parse(Console.ReadLine());
+            int max = 2;
+
+            string[] line1 = Console.ReadLine().Split(' ');
+            string latestName = line1[0].ToLower();
+            int max2 = 2;
+            for (int i = 0; i < n - 1; i++)
+            {
+
+                string[] line = Console.ReadLine().Split(' ');
+                if (line == null || line.Length == 0)
+                {
+                    if (max2 > max)
+                        max = max2;
+                    max2 = 1;
+
+                }
+                if (line[1] != "reposted")
+                {
+                    continue;
+                }
+                string name1 = line[0].ToLower();
+                string name2 = line[2].ToLower();
+                if (name2 == latestName)
+                {
+                    max2++;
+                }
+                else
+                {
+                    if (max2 > max)
+                        max = max2;
+                    max2 = 1;
+                }
+                latestName = name1;
+            }
+            if (max2 >= max)
+                max = max2;
+
+            Console.WriteLine(max);
+
+        }
         public static void Run()
         {
 

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using Lesson1.Graphs;
+using Lesson1.CodeForces;
 
 
 namespace Lesson1
@@ -43,9 +45,20 @@ namespace Lesson1
             //    {1,1}
             //};
             //DynamicTasks.KnapSack.Run();
-            DynamicTasks.Sakhir.Run();
-            DijkstraAlg dijAlg = new DijkstraAlg();
-            dijAlg.Run();
+
+            //DynamicTasks.Sakhir.Run();
+
+
+            //DijkstraAlg dijAlg = new DijkstraAlg();
+            //dijAlg.Run();
+            //BellFordAlg dfa = new BellFordAlg();
+            //dfa.Run();
+
+            //_492B.Run();
+            //Reposts.Run();
+
+            int[] ar = new int[] { 4, 33, 23, 66, 43, 0, 12, 5, 34, 99, 333333, 1 };
+            int max = ArrayTasks.FindMaxRecursive(ar);
         }
     }
 }

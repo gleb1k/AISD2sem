@@ -251,10 +251,49 @@ namespace Lesson1
         /// Максимальный элемент в массиве методом разделяй и властвуй. Дз до 21.04.22
         /// </summary>
         /// <returns></returns>
-        public static int MaxElem()
+        public static int FindMaxRecursive(int[] array)
         {
-            return 0;
+            if (array is null)
+            {
+                throw new ArgumentNullException($"Массив нулл");
+            }
+
+            if (array.Length == 0)
+            {
+                throw new ArgumentException($"Массив пуст");
+            }
+
+            return FindMax(array, 0);
         }
+        private static int FindMax(int[] array, int index, int currentMax = 0)
+        {
+            if (index == 0)
+            {
+                currentMax = array[0];
+            }
+
+            if (index == array.Length)
+            {
+                return currentMax;
+            }
+            else
+            {
+                currentMax = Math.Max(currentMax, array[index]);
+                return FindMax(array, index + 1, currentMax);
+            }
+        }
+        /// <summary>
+        /// Вывод на консоль в ширину
+        /// </summary>
+        /// <param name="root"></param>
+        //public static int GetHeight(BinaryTreeNode<T> root)
+        //{
+        //    if (root == null)
+        //        return 0;
+        //    else return 1 + Math.Max(
+        //        GetHeight(root.LeftChild),
+        //        GetHeight(root.RightChild));
+        //}
         /// <summary>
         /// Сортировка слиянием
         /// </summary>

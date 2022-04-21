@@ -283,18 +283,6 @@ namespace Lesson1
             }
         }
         /// <summary>
-        /// Вывод на консоль в ширину
-        /// </summary>
-        /// <param name="root"></param>
-        //public static int GetHeight(BinaryTreeNode<T> root)
-        //{
-        //    if (root == null)
-        //        return 0;
-        //    else return 1 + Math.Max(
-        //        GetHeight(root.LeftChild),
-        //        GetHeight(root.RightChild));
-        //}
-        /// <summary>
         /// Сортировка слиянием
         /// </summary>
         /// <param name="array"></param>

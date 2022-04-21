@@ -283,6 +283,46 @@ namespace Lesson1
             }
         }
         /// <summary>
+        /// Второй способ поиска максимума рекурсивно (более правильный вариант)
+        /// </summary>
+        /// <param name="array"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentException"></exception>
+        public static int FindMaxRecursive2(int[] array)
+        {
+            if (array is null)
+            {
+                throw new ArgumentNullException($"Массив нулл");
+            }
+            if (array.Length == 0)
+            {
+                throw new ArgumentException($"Массив пуст");
+            }
+
+            if (array.Length == 1)
+            {
+                return array[0];
+            }
+            else
+            {
+                int mid = array.Length / 2;
+                int[] left = new int[mid];
+                int[] right = new int[array.Length - mid];
+
+                for (int i = 0; i < mid; i++)
+                {
+                    left[i] = array[i];
+                }
+                for (int i = mid; i < array.Length; i++)
+                {
+                    right[i - mid] = array[i];
+                }
+
+                return Math.Max(FindMaxRecursive2(left),FindMaxRecursive2(right));
+            }
+        }
+        /// <summary>
         /// Сортировка слиянием
         /// </summary>
         /// <param name="array"></param>

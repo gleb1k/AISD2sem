@@ -58,9 +58,12 @@ namespace Lesson1
             //Reposts.Run();
             //Reposts.Run2();
 
-            int[] ar = new int[] { 4, 33, 23, 66, 43, 0, 12, 5, 34, 99, 333333, 1 };
-            //int max = ArrayTasks.FindMaxRecursive(ar);
-            int max2 = ArrayTasks.FindMaxRecursive2(ar);
+            //int[] ar = new int[] { 4, 33, 23, 66, 43, 0, 12, 5, 34, 99, 333333, 1 };
+            ////int max = ArrayTasks.FindMaxRecursive(ar);
+            //int max2 = ArrayTasks.FindMaxRecursive2(ar);
+
+            Karatsuba kar = new Karatsuba();
+            double d = kar.Calc(12345, 98765);
         }
     }
 }

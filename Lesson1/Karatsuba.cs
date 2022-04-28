@@ -48,19 +48,28 @@ namespace Lesson1
 
             Number ac = calc(a1, b1);
             Number bd = calc(a2, b2);
-            Number bigsum = calc(new Number(a1.Numeral + a2.Numeral, 0), new Number(b1.Numeral + b2.Numeral, 0));
+            //Number ad = calc(a1, b2);
+            //Number bc = calc(a2, b1);
+            //Number bigsum = calc(new Number(a1.Numeral + a2.Numeral, 0), new Number(b1.Numeral + b2.Numeral, 0));
+
+            Number bigsum = calc(new Number(Convert.ToInt32(a1.Numeral * Math.Pow(10, a1.Discharge) + a2.Numeral * Math.Pow(10, a2.Discharge)), 0),
+                                 new Number(Convert.ToInt32(b1.Numeral * Math.Pow(10, b1.Discharge) + b2.Numeral * Math.Pow(10, b2.Discharge)), 0));
+
             int x = Convert.ToInt32(Math.Sqrt(ac.Discharge));
 
-            Number middleExpression = new Number (bigsum.Numeral - ac.Numeral - bd.Numeral, x);
-            //int numeralResult = Convert.ToInt32(ac.Numeral * Math.Pow(10, ac.Discharge)
-            //                    + middleExpression.Numeral * Math.Pow(10,middleExpression.Discharge) + bd.Numeral);
-            //return new Number(numeralResult, 0);
+            //Number middleExpression = new Number((Convert.ToInt32(ad.Numeral * Math.Pow(10, ac.Discharge)) +
+            //    Convert.ToInt32(bc.Numeral * Math.Pow(10, bc.Discharge))), x);
+            Number middleExpression = new Number(bigsum.Numeral - ac.Numeral - bd.Numeral, x);
+            int minDischarge = Math.Min(middleExpression.Discharge,(Math.Min(ac.Discharge, bd.Discharge)));
+            int numeralResult = Convert.ToInt32(ac.Numeral * Math.Pow(10, ac.Discharge)
+                                + middleExpression.Numeral * Math.Pow(10, middleExpression.Discharge) + bd.Numeral);
+            return new Number(numeralResult, minDischarge);
 
             //Как мне собрать число воедино?? 2*10^2 + 7*10 + 6 => в Number ? если Number.Numeral.type == int ?? 
             //Если бы было double я мог бы 276 / 10^2 =2.76 и засунуть в new Number(2,76 , 2) == 276
 
             //Выбрать мин степень и потом сложить
-            throw new Exception();
+            //throw new Exception();
         }
     }
     /// <summary>

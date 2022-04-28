@@ -57,7 +57,9 @@ namespace Lesson1
             //return new Number(numeralResult, 0);
 
             //Как мне собрать число воедино?? 2*10^2 + 7*10 + 6 => в Number ? если Number.Numeral.type == int ?? 
-            //Если бы было double я мог бы 276 / 10^2 =2.76 и засунуть в new Number(2,76 , 2) == 276;
+            //Если бы было double я мог бы 276 / 10^2 =2.76 и засунуть в new Number(2,76 , 2) == 276
+
+            //Выбрать мин степень и потом сложить
             throw new Exception();
         }
     }

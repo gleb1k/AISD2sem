@@ -10,6 +10,7 @@ namespace AISD2sem.SplayTree
 
     public class SplayTree
     {
+        private Node root;
         /* Вспомогательная функция, которая выделяет 
         новый узел с заданным key и left и right, указывающими в NULL. */
         public static Node NewNode(int key)
@@ -21,8 +22,7 @@ namespace AISD2sem.SplayTree
         }
 
         // Служебная функция для разворота поддерева с корнем y вправо.
-        // Смотрите диаграмму, приведенную выше.
-        public static Node RightRotate(Node x)
+        private static Node RightRotate(Node x)
         {
             Node y = x.LeftChild;
             x.LeftChild = y.RightChild;
@@ -31,8 +31,7 @@ namespace AISD2sem.SplayTree
         }
 
         // Служебная функция для разворота поддерева с корнем x влево 
-        // Смотрите диаграмму, приведенную выше. 
-        public static Node LeftRotate(Node x)
+        private static Node LeftRotate(Node x)
         {
             Node y = x.RightChild;
             x.RightChild = y.LeftChild;
@@ -47,7 +46,7 @@ namespace AISD2sem.SplayTree
         // к которому был осуществлен доступ.
         // Эта функция изменяет дерево
         // и возвращает новый корень (root).
-        static Node Splay(Node root, int key)
+        private static Node Splay(Node root, int key)
         {
             // Базовые случаи: root равен NULL или
             // ключ находится в корне
@@ -120,7 +119,7 @@ namespace AISD2sem.SplayTree
         // Обратите внимание, что эта функция возвращает 
         // новый корень splay-дерева. Если ключ 
         // присутствует в дереве, он перемещается в корень.
-        static Node search(Node root, int key)
+        public static Node Search(Node root, int key)
         {
             return Splay(root, key);
         }
@@ -128,30 +127,14 @@ namespace AISD2sem.SplayTree
         // Служебная функция для вывода 
         // обхода в дерева ширину. 
         // Функция также выводит высоту каждого узла 
-        static void preOrder(Node root)
+        public static void PreOrder(Node root)
         {
             if (root != null)
             {
                 Console.Write(root.Key + " ");
-                preOrder(root.LeftChild);
-                preOrder(root.RightChild);
+                PreOrder(root.LeftChild);
+                PreOrder(root.RightChild);
             }
-        }
-
-        // Управляющий код
-        public static void Main(String[] args)
-        {
-            Node root = newNode(100);
-            root.LeftChild = newNode(50);
-            root.RightChild = newNode(200);
-            root.LeftChild.LeftChild = newNode(40);
-            root.LeftChild.LeftChild.LeftChild = newNode(30);
-            root.LeftChild.LeftChild.LeftChild.LeftChild = newNode(20);
-
-            root = search(root, 20);
-            Console.Write("Preorder traversal of the" +
-                          " modified Splay tree is \n");
-            preOrder(root);
         }
     }
 }

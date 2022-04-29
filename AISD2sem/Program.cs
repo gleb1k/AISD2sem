@@ -2,6 +2,7 @@
 using System.IO;
 using System.Diagnostics;
 using AISD2sem.ShellSort;
+using AISD2sem.SplayTree;
 
 namespace AISD2sem
 {
@@ -9,7 +10,9 @@ namespace AISD2sem
     {
         static void Main(string[] args)
         {
-            ShellSortRunner.Run();
+            //ShellSortRunner.Run();
+
+            SplayTreeRunner.Run();
         }
     }
 }

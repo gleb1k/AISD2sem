@@ -63,7 +63,7 @@ namespace Lesson1
             //int max2 = ArrayTasks.FindMaxRecursive2(ar);
 
             Karatsuba kar = new Karatsuba();
-            double d = kar.Calc(12345, 98765);
+            double d = kar.Calc(1213,2311);
         }
     }
 }

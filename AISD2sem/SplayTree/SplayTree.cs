@@ -11,15 +11,6 @@ namespace AISD2sem.SplayTree
     public class SplayTree
     {
         private Node root;
-        /* Вспомогательная функция, которая выделяет 
-        новый узел с заданным key и left и right, указывающими в NULL. */
-        public static Node NewNode(int key)
-        {
-            Node Node = new Node();
-            Node.Key = key;
-            Node.LeftChild = Node.RightChild = null;
-            return (Node);
-        }
 
         // Служебная функция для разворота поддерева с корнем y вправо.
         private static Node RightRotate(Node x)
@@ -119,7 +110,7 @@ namespace AISD2sem.SplayTree
         // Обратите внимание, что эта функция возвращает 
         // новый корень splay-дерева. Если ключ 
         // присутствует в дереве, он перемещается в корень.
-        public static Node Search(Node root, int key)
+        public Node Search(int key)
         {
             return Splay(root, key);
         }
@@ -134,6 +125,45 @@ namespace AISD2sem.SplayTree
                 Console.Write(root.Key + " ");
                 PreOrder(root.LeftChild);
                 PreOrder(root.RightChild);
+            }
+        }
+        public void Add(int key)
+        {
+
+            if (root == null)
+                root = new Node(key);
+            else
+            {
+                bool isFind = false;
+                var rootCopy = root;
+                while (isFind == false)
+                {
+                    if (key == rootCopy.Key)
+                    {
+                        rootCopy.Key = key;
+                        isFind = true;
+                    }
+                    else if (key < rootCopy.Key)
+                    {
+                        if (rootCopy.LeftChild == null)
+                        {
+                            rootCopy.LeftChild = new Node(key);
+                            isFind = true;
+                        }
+                        else
+                            rootCopy = rootCopy.LeftChild;
+                    }
+                    else
+                    {
+                        if (rootCopy.RightChild == null)
+                        {
+                            rootCopy.RightChild = new Node(key);
+                            isFind = true;
+                        }
+                        else
+                            rootCopy = rootCopy.RightChild;
+                    }
+                }
             }
         }
     }

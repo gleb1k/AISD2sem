@@ -11,17 +11,24 @@ namespace AISD2sem.SplayTree
         public static void Run()
         {
             //Cоздание дерева
-            Node root = SplayTree.NewNode(100);
-            
-            root.LeftChild = SplayTree.NewNode(50);
-            root.RightChild = SplayTree.NewNode(200);
-            root.LeftChild.LeftChild = SplayTree.NewNode(40);
-            root.LeftChild.LeftChild.LeftChild = SplayTree.NewNode(30);
-            root.LeftChild.LeftChild.LeftChild.LeftChild = SplayTree.NewNode(20);
+            Node root = new Node(100);
+            SplayTree splayTree = new SplayTree();
+            splayTree.Add(100);
+            splayTree.Add(50);
+            splayTree.Add(200);
+            splayTree.Add(40);
+            splayTree.Add(30);
+            splayTree.Add(20);
+
+            //root.LeftChild = new Node(50);
+            //root.RightChild = new Node(200);
+            //root.LeftChild.LeftChild = new Node(40);
+            //root.LeftChild.LeftChild.LeftChild = new Node(30);
+            //root.LeftChild.LeftChild.LeftChild.LeftChild = new Node(20);
             
 
             //Поворот дерева
-            root = SplayTree.Search(root, 20);
+            root = splayTree.Search(20);
             Console.Write("Preorder traversal of the" +
                           " modified Splay tree is \n");
 

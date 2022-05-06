@@ -12,6 +12,7 @@ namespace AISD2sem.SplayTree
         public int Key { get; set; }
         public Node LeftChild { get; set; }
         public Node RightChild { get; set; }
+        public Node Parent { get; set; }
 
         public Node(int key, Node leftChild, Node rightChild)
         {

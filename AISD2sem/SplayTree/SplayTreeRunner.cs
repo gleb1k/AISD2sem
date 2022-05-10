@@ -10,8 +10,7 @@ namespace AISD2sem.SplayTree
     {
         public static void Run()
         {
-            //Cоздание дерева
-            Node root = new Node(100);
+
             SplayTree splayTree = new SplayTree();
             splayTree.Add(100);
             splayTree.Add(50);
@@ -20,19 +19,14 @@ namespace AISD2sem.SplayTree
             splayTree.Add(30);
             splayTree.Add(20);
 
-            //root.LeftChild = new Node(50);
-            //root.RightChild = new Node(200);
-            //root.LeftChild.LeftChild = new Node(40);
-            //root.LeftChild.LeftChild.LeftChild = new Node(30);
-            //root.LeftChild.LeftChild.LeftChild.LeftChild = new Node(20);
-            
+            //string s = splayTree.BreadthFirst();
+            //splayTree.InfixTraverse();
 
             //Поворот дерева
-            root = splayTree.Search(20);
-            Console.Write("Preorder traversal of the" +
-                          " modified Splay tree is \n");
+            splayTree.Search(20);
 
-            SplayTree.PreOrder(root);
+            //splayTree.InfixTraverse();
+            //s = splayTree.BreadthFirst();
 
         }
     }

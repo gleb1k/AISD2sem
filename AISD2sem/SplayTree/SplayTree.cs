@@ -12,7 +12,13 @@ namespace AISD2sem.SplayTree
     {
         private Node root;
 
-        // Служебная функция для разворота поддерева с корнем y вправо.
+        public SplayTree(Node head)
+        {
+            root = head;
+        }
+        public SplayTree() { }
+
+        //Служебная функция для разворота поддерева с корнем y вправо.
         private static Node RightRotate(Node x)
         {
             Node y = x.LeftChild;
@@ -20,7 +26,6 @@ namespace AISD2sem.SplayTree
             y.RightChild = x;
             return y;
         }
-
         // Служебная функция для разворота поддерева с корнем x влево 
         private static Node LeftRotate(Node x)
         {
@@ -37,7 +42,7 @@ namespace AISD2sem.SplayTree
         // к которому был осуществлен доступ.
         // Эта функция изменяет дерево
         // и возвращает новый корень (root).
-        private static Node Splay(Node root, int key)
+        private  Node Splay(Node root, int key)
         {
             // Базовые случаи: root равен NULL или
             // ключ находится в корне
@@ -76,6 +81,7 @@ namespace AISD2sem.SplayTree
                 // Выполняем второй разворот для корня
                 return (root.LeftChild == null) ?
                                        root : RightRotate(root);
+
             }
             else // Ключ находится в правом поддереве 
             {
@@ -110,22 +116,70 @@ namespace AISD2sem.SplayTree
         // Обратите внимание, что эта функция возвращает 
         // новый корень splay-дерева. Если ключ 
         // присутствует в дереве, он перемещается в корень.
-        public Node Search(int key)
+        public void Search(int key)
         {
-            return Splay(root, key);
+            root =  Splay(root, key);
+            root.Parent = null;
+            MakeParents(root);
         }
-
-        // Служебная функция для вывода 
-        // обхода в дерева ширину. 
-        // Функция также выводит высоту каждого узла 
-        public static void PreOrder(Node root)
+        public void MakeParents(Node root)
         {
-            if (root != null)
+            if (root.RightChild != null)
             {
-                Console.Write(root.Key + " ");
-                PreOrder(root.LeftChild);
-                PreOrder(root.RightChild);
+                root.RightChild.Parent = root;
+                MakeParents(root.RightChild);
             }
+            if (root.LeftChild != null)
+            {
+                root.LeftChild.Parent = root;
+                MakeParents(root.LeftChild);
+            }
+        }
+        /// <summary>
+        /// Обход в ширину
+        /// Вывод на консоль и возвращается строка (в конце всегда пробел)
+        /// </summary>
+        /// <returns></returns>
+        public string BreadthFirst()
+        {
+            List<Node> toVist = new List<Node>();
+            Console.WriteLine("Обход в ширину: ");
+            toVist.Add(root);
+            string str = null;
+            while (toVist.Any())
+            {
+                var current = toVist[0];
+
+                if (current.RightChild != null)
+                    toVist.Add(current.RightChild);
+                if (current.LeftChild != null)
+                    toVist.Add(current.LeftChild);
+                toVist.RemoveAt(0);
+                Console.Write($"{current.Key} ");
+                str += current.Key + " ";
+            }
+            Console.WriteLine();
+            return str;
+        }
+        /// <summary>
+        /// обойти всё дерево, следуя порядку (левое поддерево, вершина, правое поддерево). Элементы по возрастанию
+        /// </summary>
+        public void InfixTraverse()
+        {
+            Console.WriteLine("Обход: левое поддерево, вершина, правое поддерево");
+            InfixTraverse(root);
+            Console.WriteLine();
+        }
+        private void InfixTraverse(Node root)
+        {
+            if (root == null)
+                return;
+            if (root.LeftChild != null)
+                InfixTraverse(root.LeftChild);
+            Console.Write(root.Key + " ");
+            if (root.RightChild != null)
+                InfixTraverse(root.RightChild);
+
         }
         public void Add(int key)
         {
@@ -140,14 +194,13 @@ namespace AISD2sem.SplayTree
                 {
                     if (key == rootCopy.Key)
                     {
-                        rootCopy.Value = value;
                         isFind = true;
                     }
                     else if (key < rootCopy.Key)
                     {
                         if (rootCopy.LeftChild == null)
                         {
-                            rootCopy.LeftChild = new BinaryTreeNode<T>(value, key, rootCopy);
+                            rootCopy.LeftChild = new Node(key, rootCopy);
                             isFind = true;
                         }
                         else
@@ -157,7 +210,7 @@ namespace AISD2sem.SplayTree
                     {
                         if (rootCopy.RightChild == null)
                         {
-                            rootCopy.RightChild = new BinaryTreeNode<T>(value, key, rootCopy);
+                            rootCopy.RightChild = new Node(key, rootCopy);
                             isFind = true;
                         }
                         else
@@ -165,50 +218,12 @@ namespace AISD2sem.SplayTree
                     }
                 }
             }
-        
-    }
-
-        /// <summary>
-        /// Поиск элемента в дереве и выполнение подъема вершины
-        /// </summary>
-        public bool Find(int key)
-        {
-            if (root == null)
-            {
-                throw new ArgumentOutOfRangeException("Дерево пусто");
-            }
-            var rootCopy = root;
-            bool isFind = false;
-            while (isFind == false)
-            {
-                if (rootCopy.Key == key)
-                {
-                    return true;
-                }
-                if (key < rootCopy.Key)
-                {
-                    if (rootCopy.LeftChild == null)
-                    {
-                        return false;
-                    }
-                    rootCopy = rootCopy.LeftChild;
-                }
-                else if (key > rootCopy.Key)
-                {
-                    if (rootCopy.RightChild == null)
-                    {
-                        return false;
-                    }
-                    rootCopy = rootCopy.RightChild;
-                }
-            }
-            return false;
         }
         /// <summary>
         /// Удаление элемента
         /// </summary>
         /// <param name="value">удаляемое значение</param>
-        public void RemoveRecursion(int key)
+        public void Remove(int key)
         {
             if (root == null)
             {

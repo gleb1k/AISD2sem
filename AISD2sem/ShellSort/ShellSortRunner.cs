@@ -18,8 +18,8 @@ namespace AISD2sem.ShellSort
 
             //FileTasks.FileFilling(path);
 
-            int[][] intArray = FileTasks.ArrayRead(path);
-            var list = FileTasks.ListRead(path);
+            int[][] intArray = FileTasksShellSort.ArrayRead(path);
+            var list = FileTasksShellSort.ListRead(path);
 
             int iterations = 0;
 

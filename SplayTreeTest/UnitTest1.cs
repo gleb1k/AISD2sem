@@ -35,6 +35,7 @@ namespace SplayTreeTest
 
             Assert.AreEqual<string>("20 50 100 30 200 40 ", splayTree.BreadthFirst());
         }
+        [TestMethod]
         public void TestRemoving()
         {
             SplayTree splayTree = new SplayTree();
@@ -49,7 +50,8 @@ namespace SplayTreeTest
 
             splayTree.Remove(50);
 
-            Assert.AreEqual<string>("20 50 100 30 200 40 ", splayTree.BreadthFirst());
+            Assert.AreEqual<string>("100 200 51 52 40 30 20 ", splayTree.BreadthFirst());
         }
+
     }
 }

@@ -7,7 +7,7 @@ using System.IO;
 
 namespace AISD2sem
 {
-     public class FileTasks
+     public class FileTasksShellSort
     {
         /// <summary>
         /// Считывает всё из файла в один массив, (все строки в один массив)

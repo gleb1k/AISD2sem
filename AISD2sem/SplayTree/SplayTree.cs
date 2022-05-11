@@ -230,6 +230,10 @@ namespace AISD2sem.SplayTree
                 Console.WriteLine("Дерево пусто");
                 return;
             }
+            if (key == root.Key)
+            {
+                
+            }
             Remove(key, root);
         }
         private void Remove(int key, Node root)
@@ -322,6 +326,7 @@ namespace AISD2sem.SplayTree
                         root.RightChild = root.RightChild.RightChild;
                         if (root.RightChild != null)
                             root.RightChild.Parent = root;
+                        
                     }
                     else
                     {

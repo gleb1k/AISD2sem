@@ -19,7 +19,7 @@ namespace AISD2sem.SplayTree
         public SplayTree() { }
 
         //Служебная функция для разворота поддерева с корнем y вправо.
-        private static Node RightRotate(Node x)
+        private static Node RightRotate(Node x) //zig
         {
             Node y = x.LeftChild;
             x.LeftChild = y.RightChild;
@@ -27,7 +27,7 @@ namespace AISD2sem.SplayTree
             return y;
         }
         // Служебная функция для разворота поддерева с корнем x влево 
-        private static Node LeftRotate(Node x)
+        private static Node LeftRotate(Node x) //zag
         {
             Node y = x.RightChild;
             x.RightChild = y.LeftChild;
@@ -230,10 +230,6 @@ namespace AISD2sem.SplayTree
                 Console.WriteLine("Дерево пусто");
                 return;
             }
-            if (key == root.Key)
-            {
-                
-            }
             Remove(key, root);
         }
         private void Remove(int key, Node root)
@@ -323,10 +319,10 @@ namespace AISD2sem.SplayTree
                         //Копируем из правого узла в удаляемый поля K, V 
                         //и ссылку на правый узел правого потомка.
                         root.Key = root.RightChild.Key;
+                        //
                         root.RightChild = root.RightChild.RightChild;
                         if (root.RightChild != null)
                             root.RightChild.Parent = root;
-                        
                     }
                     else
                     {
@@ -336,6 +332,7 @@ namespace AISD2sem.SplayTree
                             mostLeft = mostLeft.LeftChild;
                         //Скопируем данные (кроме ссылок на дочерние элементы) из m в n
                         root.Key = mostLeft.Key;
+                        //
                         //удалим узел m.
                         mostLeft.Parent.LeftChild = null;
                     }

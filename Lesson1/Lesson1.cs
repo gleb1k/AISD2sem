@@ -66,6 +66,8 @@ namespace Lesson1
             //double d = kar.Calc(12345, 98765);
 
             int a = ArrayTasks.MajorityElement(new int[] { 30, 40, 0, 0, 30, 30 });
+        
+        
         }
     }
 }

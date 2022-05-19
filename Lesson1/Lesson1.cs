@@ -26,7 +26,7 @@ namespace Lesson1
 
             //ДОМАШКА 2 ----------------------------------------------------
 
-            //int a =ArrayTasks.MajorityElement(new int[] {1,2,3,4,4,4,4,4,5} );
+            //int a = ArrayTasks.MajorityElement(new int[] { 2, 1 ,2  });
 
             //int[] array = new int[] { 1, 2, 3 };
 
@@ -60,10 +60,12 @@ namespace Lesson1
 
             //int[] ar = new int[] { 4, 33, 23, 66, 43, 0, 12, 5, 34, 99, 333333, 1 };
             ////int max = ArrayTasks.FindMaxRecursive(ar);
-            //int max2 = ArrayTasks.FindMaxRecursive2(ar);
+            ////int max2 = ArrayTasks.FindMaxRecursive2(ar);
 
-            Karatsuba kar = new Karatsuba();
-            double d = kar.Calc(12345, 98765);
+            //Karatsuba kar = new Karatsuba();
+            //double d = kar.Calc(12345, 98765);
+
+            int a = ArrayTasks.MajorityElement(new int[] { 30, 40, 0, 0, 30, 30 });
         }
     }
 }

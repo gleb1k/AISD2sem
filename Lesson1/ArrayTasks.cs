@@ -220,8 +220,12 @@ namespace Lesson1
 
         public static int MajorityElement(int[] array)
         {
+            if (array == null)
+                throw new Exception("Массив пуст");
+
             Couple[] couple = UniqNumCount(array);
             int majorityEl = 0;
+            bool majorityExist = false;
             double majorityCount = (double)array.Length / 2.0;
             foreach (var element in couple)
             {
@@ -229,9 +233,14 @@ namespace Lesson1
                 {
                     majorityEl = element.Key;
                     majorityCount = element.Value;
+                    majorityExist = true;
                 }
             }
-            return majorityEl;
+            if (majorityExist)
+                return majorityEl;
+            else
+                throw new Exception("No Majority Element :с ");
+            
         }
 
         public static void RemoveAt(ref int[] array, int k)

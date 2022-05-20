@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lesson1
+namespace Lesson1.Multiplication
 {
-
     public class Karatsuba
     {
         public double Calc(int a, int b)

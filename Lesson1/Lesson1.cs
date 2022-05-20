@@ -2,6 +2,7 @@
 using System.IO;
 using Lesson1.Graphs;
 using Lesson1.CodeForces;
+using Lesson1.Multiplication;
 
 
 namespace Lesson1
@@ -62,8 +63,10 @@ namespace Lesson1
             ////int max = ArrayTasks.FindMaxRecursive(ar);
             //int max2 = ArrayTasks.FindMaxRecursive2(ar);
 
-            Karatsuba kar = new Karatsuba();
-            double d = kar.Calc(12345, 98765);
+            //Karatsuba kar = new Karatsuba();
+            //double d = kar.Calc(12345, 98765);
+
+            MultiplicationRunner.Run();
         }
     }
 }

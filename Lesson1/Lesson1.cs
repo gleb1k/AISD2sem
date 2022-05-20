@@ -27,7 +27,7 @@ namespace Lesson1
 
             //ДОМАШКА 2 ----------------------------------------------------
 
-            //int a =ArrayTasks.MajorityElement(new int[] {1,2,3,4,4,4,4,4,5} );
+            //int a = ArrayTasks.MajorityElement(new int[] { 2, 1 ,2  });
 
             //int[] array = new int[] { 1, 2, 3 };
 
